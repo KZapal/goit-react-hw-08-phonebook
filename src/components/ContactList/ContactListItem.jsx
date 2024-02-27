@@ -7,21 +7,6 @@ const ContactListItem = ({ contact }) => {
 
   const handleDelete = () => dispatch(deleteContact(contact.id));
 
-  // const handleDelete = () => {
-  //   dispatch(deleteContact(contact.id));
-
-  //   const contactsFromLocalStorage = JSON.parse(
-  //     localStorage.getItem('contacts')
-  //   );
-  //   const updatedContacts = contactsFromLocalStorage.filter(
-  //     item => item.id !== contact.id
-  //   );
-
-  //   localStorage.setItem('contacts', JSON.stringify(updatedContacts));
-  // };
-
-  // const formattedNumber = contact.number.replace(/(\d{3})(?=\d)/g, '$1-');
-
   return (
     <div className={css.itemIn}>
       <span>

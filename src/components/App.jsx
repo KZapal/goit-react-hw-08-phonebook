@@ -1,30 +1,29 @@
-import ContactForm from './Form/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import css from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from '../redux/operations';
-import { selectError, selectIsLoading } from '../redux/selectors';
+// import { selectError, selectIsLoading } from '../redux/selectors';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import Home from 'pages/Home';
+
+import { Route, Routes } from 'react-router-dom';
+import { NotFoundPage } from 'pages/NotFoundPage';
+import Contacts from 'pages/Contacts';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <div className={css.mainBlock}>
-      <h2 className={css.header}>Phone Book</h2>
-      <ContactForm />
-      <h2 className={css.header}>Contacts</h2>
-      <Filter />
-      {isLoading && !error && <b>Request in progress...</b>}
-      <ContactList />
-    </div>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 };
 
