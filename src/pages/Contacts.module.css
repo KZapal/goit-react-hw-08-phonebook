@@ -1,0 +1,21 @@
+.mainBlock {
+  display: flex;
+  justify-content: flex-start;
+  gap: 6%;
+  max-width: 800px;
+
+  margin: 50px auto;
+  padding: 20px;
+
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  width: 100%;
+}

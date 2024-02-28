@@ -1,7 +1,7 @@
 import ContactList from '../components/ContactList/ContactList';
 import Filter from '../components/Filter/Filter';
 import ContactForm from '../components/Form/ContactForm';
-import css from '../components/App.module.css';
+import css from './Contacts.module.css';
 import { useSelector } from 'react-redux';
 import { selectError, selectIsLoading } from '../redux/selectors';
 
@@ -12,12 +12,17 @@ const Contacts = () => {
   return (
     <>
       <div className={css.mainBlock}>
-        <h2 className={css.header}>Phone Book</h2>
-        <ContactForm />
-        <h2 className={css.header}>Contacts</h2>
-        <Filter />
-        {isLoading && !error && <b>Request in progress...</b>}
-        <ContactList />
+        <div>
+          <p className={css.header}>Search</p>
+          <Filter />
+          <p className={css.header}>Add contact</p>
+          <ContactForm />
+        </div>
+        <div className={css.wrapper}>
+          <p className={css.header}>Contacts list</p>
+          {isLoading && !error && <b>Request in progress...</b>}
+          <ContactList />
+        </div>
       </div>
     </>
   );

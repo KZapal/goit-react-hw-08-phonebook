@@ -1,14 +1,18 @@
-// import ContactList from 'components/ContactList/ContactList';
-// import Filter from 'components/Filter/Filter';
+import css from './Home.module.css';
 
 const Home = () => {
   return (
     <>
       <header></header>
-      <main>
-        Cos tu wstawie
-        {/* <Filter />
-        <ContactList /> */}
+      <main className={css.body}>
+        <div className={css.container}>
+          <img
+            className={css.img}
+            src="https://example.com/obrazek.jpg"
+            alt="Obrazek powitalny"
+          />
+          <h1 className={css.h1}>Witaj na stronie powitalnej!</h1>
+        </div>
       </main>
     </>
   );

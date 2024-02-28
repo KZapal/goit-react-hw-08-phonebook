@@ -9,11 +9,13 @@ export const SharedLayout = () => {
     <>
       <container>
         <header className={css.navigate}>
-          <nav>
+          <nav className={css.navigate__in}>
             <Link
               className={`${css.navigate__item} ${
                 location.pathname === '/' ? css.active : ''
               }`}
+              npm
+              s
               to="/"
             >
               Home
