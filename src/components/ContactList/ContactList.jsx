@@ -7,6 +7,7 @@ import ContactListItem from './ContactListItem';
 const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
 
+  console.log(selectFilteredContacts);
   return (
     <div className={css.contactList}>
       <ul className={css.list}>

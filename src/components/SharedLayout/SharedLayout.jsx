@@ -7,7 +7,7 @@ export const SharedLayout = () => {
 
   return (
     <>
-      <container>
+      <div>
         <header className={css.navigate}>
           <nav className={css.navigate__in}>
             <Link
@@ -49,7 +49,15 @@ export const SharedLayout = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
-      </container>
+      </div>
+      <div>
+        <footer className={css.footer}>
+          <div className={css.wrapper}>
+            <p>Kamil</p>
+            <Link className={css.footerP}></Link>
+          </div>
+        </footer>
+      </div>
     </>
   );
 };
