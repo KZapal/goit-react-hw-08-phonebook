@@ -6,7 +6,7 @@ import { useAuth } from 'hooks/useAuth';
 
 export const SharedLayout = () => {
   const location = useLocation();
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
@@ -69,7 +69,11 @@ export const SharedLayout = () => {
         <footer className={css.footer}>
           <div className={css.wrapper}>
             <p>Kamil</p>
-            <Link className={css.footerP}></Link>
+            <Link
+              className={css.footerP}
+              to="https://github.com/KZapal/goit-react-hw-08-phonebook"
+              target="_blank"
+            ></Link>
           </div>
         </footer>
       </div>
