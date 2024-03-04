@@ -15,19 +15,6 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-// export const fetchContacts = createAsyncThunk(
-//   'contacts/fetchAll',
-//   async (_, thunkApi) => {
-//     try {
-//       const response = await axios.get('/contacts');
-//       return response.data;
-//     } catch (error) {
-//       toast.error(`Something went wrong :(`);
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (newContact, thunkAPI) => {

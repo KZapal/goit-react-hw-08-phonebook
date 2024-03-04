@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addContact, deleteContact, fetchContacts } from './operations';
+import { logout } from '../../redux/auth/operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -29,21 +30,16 @@ export const contactsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      // .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      // .addCase(fetchContacts.rejected, handleRejected)
-      // .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items.push(action.payload);
       })
-      // .addCase(addContact.rejected, handleRejected)
-      // .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -53,12 +49,14 @@ export const contactsSlice = createSlice({
 
         state.items.splice(index, 1);
       })
+      .addCase(logout.fulfilled, state => {
+        state.items = [];
+      })
       .addMatcher(isPendingAction, handlePending)
       .addMatcher(isRejectAction, handleRejected)
-      .addDefaultCase((state, acton) => {
+      .addDefaultCase((state, action) => {
         state.error = 'someone use old function, fix it!';
       });
-    // .addCase(deleteContact.rejected, handleRejected);
   },
 });
 

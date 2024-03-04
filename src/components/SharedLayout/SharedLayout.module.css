@@ -1,7 +1,8 @@
 .navigate {
-  display: flex;
+  padding: 8px;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   gap: 12px;
 
   border-top: 1px solid black;
@@ -12,8 +13,8 @@
 
 .navigate__in {
   display: flex;
-  gap: 5px;
   padding: 8px;
+  justify-content: space-between;
 }
 
 .navigate__item {

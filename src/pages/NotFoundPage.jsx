@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import css from '../components/RegistrForm/RegisterForm.module.css';
+import css from '../components/RegisterForm/RegisterForm.module.css';
 
 export const NotFoundPage = () => {
   return (

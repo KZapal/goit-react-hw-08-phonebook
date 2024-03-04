@@ -1,9 +1,9 @@
+import { selectError, selectIsLoading } from '../redux/contacts/selectors';
 import ContactList from '../components/ContactList/ContactList';
 import Filter from '../components/Filter/Filter';
 import ContactForm from '../components/Form/ContactForm';
 import css from './pages.module.css';
 import { useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from '../redux/selectors';
 
 const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
