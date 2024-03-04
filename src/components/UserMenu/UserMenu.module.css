@@ -1,0 +1,23 @@
+.userMenu {
+  display: flex;
+  gap: 5px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.name {
+  color: black;
+  font-weight: 500;
+}
+
+.btn {
+  color: black;
+  background-color: #4caf50;
+  border: none;
+  font-weight: 500;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #45a049;
+}
