@@ -19,7 +19,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(currentUser());
-  }, []);
+  }, [dispatch]);
 
   if (isRefreshing) {
     return <p>loading...</p>;

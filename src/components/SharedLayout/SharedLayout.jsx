@@ -18,8 +18,6 @@ export const SharedLayout = () => {
                 className={`${css.navigate__item} ${
                   location.pathname === '/' ? css.active : ''
                 }`}
-                npm
-                s
                 to="/"
               >
                 Home
