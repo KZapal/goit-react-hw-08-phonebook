@@ -8,13 +8,22 @@ import Register from 'pages/Register';
 import Login from 'pages/Login';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { currentUser } from '../redux/auth/operations';
+import { useAuth } from 'hooks/useAuth';
 
 const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(currentUser());
+  }, []);
+
+  if (isRefreshing) {
+    return <p>loading...</p>;
+  }
 
   return (
     <Routes>

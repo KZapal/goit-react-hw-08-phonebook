@@ -3,9 +3,17 @@ import ContactList from '../components/ContactList/ContactList';
 import Filter from '../components/Filter/Filter';
 import ContactForm from '../components/Form/ContactForm';
 import css from './pages.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from '../redux/contacts/operations';
+import { useEffect } from 'react';
 
 const Contacts = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
