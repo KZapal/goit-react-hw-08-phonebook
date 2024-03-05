@@ -21,11 +21,9 @@ const App = () => {
     dispatch(currentUser());
   }, [dispatch]);
 
-  if (isRefreshing) {
-    return <p>loading...</p>;
-  }
-
-  return (
+  return isRefreshing ? (
+    <p>loading...</p>
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
