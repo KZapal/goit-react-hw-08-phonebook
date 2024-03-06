@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import css from './ContactList.module.css';
 import { deleteContact } from '../../redux/contacts/operations';
 
-const ContactListItem = ({ contact, openModal }) => {
+const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => dispatch(deleteContact(contact.id));
@@ -14,9 +14,7 @@ const ContactListItem = ({ contact, openModal }) => {
           {contact.name}: {contact.number}
         </span>
         <div>
-          <button onClick={openModal} className={css.btn}>
-            Update
-          </button>{' '}
+          <button className={css.btn}>Update</button>{' '}
           <button onClick={handleDelete} className={css.btn}>
             Delete
           </button>
