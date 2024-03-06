@@ -6,6 +6,7 @@ import css from './pages.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ const Contacts = () => {
 
   return (
     <>
+      <Helmet>
+        <title>hw8 - Contacts list</title>
+      </Helmet>
       <div className={css.content}>
         <div className={css.mainBlock}>
           <div>

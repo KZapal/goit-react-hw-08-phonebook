@@ -13,7 +13,7 @@ const ContactList = () => {
       <ul className={css.list}>
         {filteredContacts.map(contact => (
           <li className={css.item} key={contact.id}>
-            <ContactListItem contact={contact} />
+            <ContactListItem contact={contact} openModal={openModal}/>
           </li>
         ))}
       </ul>

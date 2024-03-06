@@ -1,11 +1,11 @@
 .userMenu {
   display: flex;
-  gap: 5px;
-  border: 1px solid black;
-  padding: 5px;
 }
 
 .name {
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
   color: black;
   font-weight: 500;
 }
