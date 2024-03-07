@@ -1,22 +1,15 @@
-import { useState } from 'react';
+import ContactFormUpdate from 'components/Form/ContactFormUpdate';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import ContactFormUpdate from '../Form/ContactFormUpdate';
 
-const Modal = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
-
-  return (
-    <div>
-      {showModal &&
-        ReactDOM.createPortal(
-          <ContactFormUpdate openModal={openModal} closeModal={closeModal} />,
-          document.getElementById('portal')
-        )}
-    </div>
-  );
-};
+const Modal = ({ isOpen, children, close, contact }) =>
+  isOpen
+    ? ReactDOM.createPortal(
+        <ContactFormUpdate close={close} contact={contact}>
+          {children}
+        </ContactFormUpdate>,
+        document.getElementById('portal')
+      )
+    : null;
 
 export default Modal;

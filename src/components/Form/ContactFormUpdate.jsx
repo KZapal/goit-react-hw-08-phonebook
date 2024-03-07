@@ -2,9 +2,8 @@ import css from './ContactForm.module.css';
 
 import { useDispatch } from 'react-redux';
 import { updateContact } from '../../redux/contacts/operations';
-import { nanoid } from '@reduxjs/toolkit';
 
-const ContactFormUpdate = ({ closeModal }) => {
+const ContactFormUpdate = ({ close, contact }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
@@ -13,18 +12,17 @@ const ContactFormUpdate = ({ closeModal }) => {
     const form = event.target;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-    form.reset();
 
     const formattedNumber = number.replace(/(\d{3})(?=\d)/g, '$1-');
 
-    const newContact = {
+    const updatedContact = {
       name: name,
       number: formattedNumber,
-      id: nanoid(),
+      id: contact.id,
     };
-    dispatch(updateContact(newContact));
-    // Close modal after submitting the form
-    closeModal();
+    dispatch(updateContact(updatedContact));
+    form.reset();
+    close();
   };
 
   return (
@@ -48,9 +46,9 @@ const ContactFormUpdate = ({ closeModal }) => {
       <button className={css.btn} type="submit">
         Update contact
       </button>
-      {/* Add close button */}
-      <button className={css.btn} onClick={closeModal}>
-        Close
+      {'  '}
+      <button className={css.btn} onClick={close} type="button">
+        Close modal
       </button>
     </form>
   );
