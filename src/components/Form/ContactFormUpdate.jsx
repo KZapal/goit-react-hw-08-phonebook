@@ -10,17 +10,17 @@ const ContactFormUpdate = ({ close, contact }) => {
     event.preventDefault();
 
     const form = event.target;
-    // const name = form.elements.name.value;
-    // const number = form.elements.number.value;
+    const name = form.elements.name.value;
+    const number = form.elements.number.value;
 
-    // const formattedNumber = number.replace(/(\d{3})(?=\d)/g, '$1-');
+    const formattedNumber = number.replace(/(\d{3})(?=\d)/g, '$1-');
 
-    // const updatedContact = {
-    //   name: name,
-    //   number: formattedNumber,
-    //   id: contact.id,
-    // };
-    dispatch(updateContact(contact.id));
+    const updatedContact = {
+      name: name,
+      number: formattedNumber,
+      id: contact.id,
+    };
+    dispatch(updateContact(contact.id, { updatedContact }));
     form.reset();
     close();
   };
@@ -48,7 +48,7 @@ const ContactFormUpdate = ({ close, contact }) => {
       </button>
       {'  '}
       <button className={css.btn} onClick={close} type="button">
-        Close modal
+        Close popup
       </button>
     </form>
   );
