@@ -15,7 +15,7 @@ const UserMenu = () => {
     <div className={css.userMenu}>
       <p className={css.name}>{user.name}</p>
       <button className={css.btn} onClick={handleLogout}>
-        Logout
+        <b>Logout</b>
       </button>
     </div>
   );
