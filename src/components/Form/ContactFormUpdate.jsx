@@ -17,8 +17,8 @@ const ContactFormUpdate = ({ close, contact }) => {
     const formattedNumber = number.replace(/(\d{3})(?=\d)/g, '$1-');
 
     const updatedContact = {
-      name: name,
-      number: formattedNumber,
+      name: name.trim() !== '' ? name : contact.name,
+      number: formattedNumber.trim() !== '' ? formattedNumber : contact.number,
     };
     dispatch(updateContact({ contactId: contact.id, updatedContact }));
 
@@ -35,7 +35,6 @@ const ContactFormUpdate = ({ close, contact }) => {
           name="name"
           placeholder="New name"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
         />
         <input
           className={css.formInput}
@@ -43,7 +42,6 @@ const ContactFormUpdate = ({ close, contact }) => {
           name="number"
           placeholder="New number"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
         />
         <button className={css.btn} type="submit">
           Edit contact
