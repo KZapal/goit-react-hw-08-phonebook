@@ -2,6 +2,7 @@ import css from './ContactForm.module.css';
 
 import { useDispatch } from 'react-redux';
 import { updateContact } from '../../redux/contacts/operations';
+import Draggable from 'react-draggable';
 
 const ContactFormUpdate = ({ close, contact }) => {
   const dispatch = useDispatch();
@@ -26,31 +27,33 @@ const ContactFormUpdate = ({ close, contact }) => {
   };
 
   return (
-    <form className={(css.form, css.formUpdate)} onSubmit={handleSubmit}>
-      <input
-        className={css.formInput}
-        type="text"
-        name="name"
-        placeholder="New name"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
-      />
-      <input
-        className={css.formInput}
-        type="number"
-        name="number"
-        placeholder="New number"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
-      />
-      <button className={css.btn} type="submit">
-        Edit contact
-      </button>
-      {'  '}
-      <button className={css.btn} onClick={close} type="button">
-        Close popup
-      </button>
-    </form>
+    <Draggable>
+      <form className={(css.form, css.formUpdate)} onSubmit={handleSubmit}>
+        <input
+          className={css.formInput}
+          type="text"
+          name="name"
+          placeholder="New name"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+        <input
+          className={css.formInput}
+          type="number"
+          name="number"
+          placeholder="New number"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+        <button className={css.btn} type="submit">
+          Edit contact
+        </button>
+        {'  '}
+        <button className={css.btn} onClick={close} type="button">
+          Close popup
+        </button>
+      </form>
+    </Draggable>
   );
 };
 
