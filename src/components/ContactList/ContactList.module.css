@@ -38,3 +38,9 @@
 .btn:focus {
   background-color: #45a049;
 }
+
+@media (max-width: 768px) {
+  .contactList {
+    height: auto;
+  }
+}
