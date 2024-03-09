@@ -26,7 +26,7 @@ const ContactListItem = ({ contact }) => {
         </span>
         <div>
           <button onClick={handleOpenModal} className={css.btn}>
-            Update
+            Edit
           </button>{' '}
           <button onClick={handleDelete} className={css.btn}>
             Delete

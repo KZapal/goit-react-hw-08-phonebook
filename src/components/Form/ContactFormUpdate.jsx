@@ -18,9 +18,9 @@ const ContactFormUpdate = ({ close, contact }) => {
     const updatedContact = {
       name: name,
       number: formattedNumber,
-      id: contact.id,
     };
-    dispatch(updateContact(contact.id, { updatedContact }));
+    dispatch(updateContact({ contactId: contact.id, updatedContact }));
+
     form.reset();
     close();
   };
@@ -44,7 +44,7 @@ const ContactFormUpdate = ({ close, contact }) => {
         required
       />
       <button className={css.btn} type="submit">
-        Update contact
+        Edit contact
       </button>
       {'  '}
       <button className={css.btn} onClick={close} type="button">
