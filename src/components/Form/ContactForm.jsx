@@ -3,6 +3,8 @@ import css from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import { nanoid } from '@reduxjs/toolkit';
+import { Button, FormControl, TextField } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -26,32 +28,27 @@ const ContactForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <input
-        className={css.formInput}
-        type="text"
-        name="name"
-        placeholder="Name: full name"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
-      />
-      <input
-        className={css.formInput}
-        type="number"
-        name="number"
-        placeholder="Phone number: seven digits"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
-      />
-      <button className={css.btn} type="submit">
-        Add contact
-      </button>
+    <form onSubmit={handleSubmit}>
+      <FormControl autoComplete="off" className={css.in}>
+        <TextField
+          className={css.formInput}
+          label="Name"
+          name="name"
+          placeholder="Name: full name"
+        />
+        <TextField
+          className={css.formInput}
+          label="Number"
+          type="number"
+          name="number"
+          placeholder="Phone number: seven digits"
+        />
+        <Button variant="contained" type="submit" endIcon={<AddIcon />}>
+          Add
+        </Button>
+      </FormControl>
     </form>
   );
 };
-
-// ContactForm.propTypes = {
-//   handleSubmit: PropTypes.func,
-// };
 
 export default ContactForm;

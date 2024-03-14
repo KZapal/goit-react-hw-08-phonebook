@@ -1,39 +1,74 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import css from './ContactList.module.css';
+// import css from './ContactList.module.css';
 import { deleteContact } from '../../redux/contacts/operations';
-import Modal from 'components/Modal/Modal';
+// import ServerModal from 'components/Modal/Modal';
+// import { IconButton } from '@mui/material';
+import { Button, Grid } from '@mui/material';
+// import { DeleteIcon } from '@mui/icons-material';
+// import { Button, SvgIcon } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import PersonIcon from '@mui/icons-material/Person';
+import { MyModal } from 'components/Modal/Modal';
 
 const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contact.id));
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsOpen(false);
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <>
-      <div className={css.itemIn}>
-        <span>
-          {contact.name}: {contact.number}
-        </span>
-        <div>
-          <button onClick={handleOpenModal} className={css.btn}>
-            Edit
-          </button>{' '}
-          <button onClick={handleDelete} className={css.btn}>
-            Delete
-          </button>
-        </div>
-      </div>
-      <Modal isOpen={isOpen} close={handleCloseModal} contact={contact}></Modal>
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid
+          item
+          xs={6}
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="flex-start"
+        >
+          <Grid item xs={6}>
+            <PersonIcon color="primary" />
+            {contact.name}
+          </Grid>
+          <Grid item xs={6}>
+            {contact.number}
+          </Grid>
+        </Grid>{' '}
+        <Grid item xs={6} container>
+          <Grid item xs={6}>
+            <Button variant="outlined" onClick={handleOpen}>
+              <EditIcon />
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleDelete}>
+              <DeleteIcon />
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+      <MyModal
+        open={open}
+        onClose={handleClose}
+        close={handleClose}
+        contact={contact}
+      ></MyModal>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import css from '../components/RegisterForm/RegisterForm.module.css';
+
 import { Helmet } from 'react-helmet';
+import { Button } from '@mui/material';
 
 export const NotFoundPage = () => {
   return (
@@ -12,11 +13,11 @@ export const NotFoundPage = () => {
         <h2 style={{ fontSize: '40px', marginBottom: '20px' }}>
           Page doesn't exist
         </h2>
-        <button className={css.btn}>
+        <Button variant="complained">
           <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
             Back to main page
           </Link>
-        </button>
+        </Button>
       </div>
     </>
   );

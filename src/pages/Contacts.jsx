@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import SearchIcon from '@mui/icons-material/Search';
+import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -26,13 +28,18 @@ const Contacts = () => {
       <div className={css.content}>
         <div className={css.mainBlock}>
           <div>
-            <p className={css.mainP}>Search</p>
+            <p className={css.mainP}>
+              Search <SearchIcon color="primary" />
+            </p>
+
             <Filter />
             <p className={css.mainP}>Add contact</p>
             <ContactForm />
           </div>
           <div className={css.wrapper}>
-            <p className={css.mainP}>Contacts list</p>
+            <p className={css.mainP}>
+              Contacts list <ImportContactsIcon color="primary" />
+            </p>
             {isLoading && !error && <b>Request in progress...</b>}
             <ContactList />
           </div>

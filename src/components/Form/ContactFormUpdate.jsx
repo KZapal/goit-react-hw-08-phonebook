@@ -2,9 +2,12 @@ import css from './ContactForm.module.css';
 
 import { useDispatch } from 'react-redux';
 import { updateContact } from '../../redux/contacts/operations';
-import Draggable from 'react-draggable';
+// import Draggable from 'react-draggable';
+import { Button, FormControl, TextField } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import SyncAltIcon from '@mui/icons-material/SyncAlt';
 
-const ContactFormUpdate = ({ close, contact }) => {
+const ContactFormUpdate = ({ onClose, contact }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
@@ -23,35 +26,40 @@ const ContactFormUpdate = ({ close, contact }) => {
     dispatch(updateContact({ contactId: contact.id, updatedContact }));
 
     form.reset();
-    close();
+    onClose();
   };
 
   return (
-    <Draggable>
-      <form className={(css.form, css.formUpdate)} onSubmit={handleSubmit}>
-        <input
-          className={css.formInput}
-          type="text"
+    <form onSubmit={handleSubmit} className={css.test}>
+      <FormControl autoComplete="off" className={css.in}>
+        <TextField
+          label="Name"
           name="name"
           placeholder="New name"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        />
-        <input
           className={css.formInput}
+        />
+        <TextField
+          label="Number"
           type="number"
           name="number"
           placeholder="New number"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          className={css.formInput}
         />
-        <button className={css.btn} type="submit">
-          Edit contact
-        </button>
+        <Button variant="contained" type="submit">
+          Update
+        </Button>
         {'  '}
-        <button className={css.btn} onClick={close} type="button">
-          Close popup
-        </button>
-      </form>
-    </Draggable>
+        <Button
+          variant="contained"
+          startIcon={<CloseIcon />}
+          onClick={onClose}
+          type="button"
+        >
+          {' '}
+          Close
+        </Button>
+      </FormControl>
+    </form>
   );
 };
 

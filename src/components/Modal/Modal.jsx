@@ -1,15 +1,18 @@
+import { Modal } from '@mui/material';
 import ContactFormUpdate from 'components/Form/ContactFormUpdate';
-import React from 'react';
-import ReactDOM from 'react-dom';
 
-const Modal = ({ isOpen, children, close, contact }) =>
-  isOpen
-    ? ReactDOM.createPortal(
-        <ContactFormUpdate close={close} contact={contact}>
-          {children}
-        </ContactFormUpdate>,
-        document.getElementById('portal')
-      )
-    : null;
-
-export default Modal;
+export const MyModal = ({ open, onClose, contact }) => {
+  return (
+    <Modal
+      open={open}
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      onClose={onClose}
+    >
+      <ContactFormUpdate onClose={onClose} contact={contact} />
+    </Modal>
+  );
+};

@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import css from './Filter.module.css';
 import { setFilter } from '../../redux/filter/filterSlice';
+import { TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 // import PropTypes from 'prop-types';
 
 const Filter = () => {
@@ -14,12 +16,11 @@ const Filter = () => {
 
   return (
     <div className={css.filter}>
-      <input
-        className={css.filterInput}
-        type="text"
+      <TextField
+        label="Search"
         name="filter"
         onChange={changeFilter}
-        placeholder="Find contacts by name"
+        placeholder="Find contacts"
       />
     </div>
   );
