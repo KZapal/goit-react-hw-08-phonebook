@@ -12,7 +12,9 @@ export const MyModal = ({ open, onClose, contact }) => {
       }}
       onClose={onClose}
     >
-      <ContactFormUpdate onClose={onClose} contact={contact} />
+      <div>
+        <ContactFormUpdate onClose={onClose} contact={contact} />
+      </div>
     </Modal>
   );
 };

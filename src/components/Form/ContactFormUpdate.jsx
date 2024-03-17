@@ -45,7 +45,7 @@ const ContactFormUpdate = ({ onClose, contact }) => {
           placeholder="New number"
           className={css.formInput}
         />
-        <Button variant="contained" type="submit">
+        <Button variant="contained" startIcon={<SyncAltIcon />} type="submit">
           Update
         </Button>
         {'  '}

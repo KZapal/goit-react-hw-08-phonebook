@@ -1,5 +1,3 @@
-import React from 'react';
-// import css from './ContactList.module.css';
 import { useSelector } from 'react-redux';
 import ContactListItem from './ContactListItem';
 import { selectFilteredContacts } from '../../redux/filter/selectors';
@@ -14,8 +12,8 @@ const ContactList = () => {
       <List>
         <Grid container spacing={2}>
           {filteredContacts.map(contact => (
-            <Grid item xs="6" container>
-              <ListItem className={css.listItem} key={contact.id}>
+            <Grid item xs={6} container key={contact.id}>
+              <ListItem className={css.listItem}>
                 <ContactListItem contact={contact} />
               </ListItem>
             </Grid>
